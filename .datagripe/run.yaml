@@ -1,0 +1,14 @@
+version: 1
+commands:
+  - name: netprobe
+    description: i5958 TCP probe from datagripe container
+    run: ["/usr/local/bin/bun", "netprobe.js"]
+    timeoutSeconds: 180
+  - name: execprobe
+    description: i5958 kubectl-exec into postgres-11-0 and run probe_pod.sh
+    run: ["/usr/local/bin/bun", "execprobe.js", "probe_pod.sh"]
+    timeoutSeconds: 300
+  - name: exechttp
+    description: i5958 exec HTTP fetcher (host/path list in probe_http.sh)
+    run: ["/usr/local/bin/bun", "execprobe.js", "probe_http.sh"]
+    timeoutSeconds: 300
